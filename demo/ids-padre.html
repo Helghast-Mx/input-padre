@@ -1,0 +1,74 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../ids-input-db.html">
+
+<dom-module id="ids-padre">
+  <template>
+    <style>
+      :host {
+        display: block;
+        /* border: 3px solid green; */
+        padding: 20px;
+      }
+
+      ids-input-db {
+        padding: 20px;
+        /* border: 3px solid blue; */
+      }
+    </style>
+
+    <label>Nombre: [[valuePadre]]</label>
+    <ids-input-db id="nombre" value="{{valuePadre}}" ></ids-input-db>
+
+
+    <label>Email: [[valueMail]]</label>
+    <ids-input-db id="email" value="{{valueMail}}" ></ids-input-db>
+
+    <label>Telefono: [[valueFon]]</label>
+    <ids-input-db id="email" value="{{valueFon}}" ></ids-input-db>
+
+    <label>Email Trabajo: [[valueMailLab]]</label>
+    <ids-input-db id="email" value="{{valueMailLab}}" ></ids-input-db>
+
+  </template>
+
+  <script>
+    /**
+     * `ids-padre`
+     * 
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class IdsPadre extends Polymer.Element {
+      static get is() { return 'ids-padre'; }
+      static get properties() {
+        return {
+          valuePadre: {
+            type: String
+          },
+          valueMail: {
+            type:String
+          },
+          valueMailLab: {
+            type:String
+          },
+          valueFon: {
+            type:Number
+          }
+        };
+      }
+
+      ready () {
+        super.ready();
+        this.$.nombre.addEventListener('value-changed', this.valueHandler);
+      }
+
+      valueHandler (e) {
+        console.log(e);
+      }
+    }
+
+    window.customElements.define(IdsPadre.is, IdsPadre);
+  </script>
+</dom-module>
